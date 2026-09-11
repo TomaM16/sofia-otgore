@@ -1,0 +1,124 @@
+<!doctype html>
+<html lang="bg" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>София отгоре — карта и данни за имотите</title>
+<link rel="stylesheet" href="vendor/maplibre-gl.css">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div id="app">
+  <aside id="side">
+    <header>
+      <h1>София отгоре</h1>
+      <div class="sub" id="subtitle"></div>
+    </header>
+
+    <div class="sec tight">
+      <input id="q" type="search" placeholder="Търси квартал или район …"
+             autocomplete="off" aria-label="Търсене">
+      <div id="qres"></div>
+    </div>
+
+    <nav id="sections" aria-label="Раздели"></nav>
+
+    <div class="sechead">
+      <p id="secq"></p>
+      <div class="hero" id="hero"></div>
+    </div>
+
+    <div class="sec tight">
+      <div class="seg" id="levels" role="group" aria-label="Ниво на детайлност"></div>
+    </div>
+
+    <div class="sec tight">
+      <div id="views"></div>
+    </div>
+
+    <div class="sec tight" id="yearwrap">
+      <div class="row">
+        <input type="range" id="year" min="2002" max="2020" step="1" value="2020">
+        <span id="yearval">2020</span>
+      </div>
+    </div>
+
+    <div class="sec">
+      <div id="legend"></div>
+    </div>
+
+    <details class="acc">
+      <summary>Класация по показателя</summary>
+      <div class="accbody"><div id="ranks"></div></div>
+    </details>
+
+    <details class="acc">
+      <summary>Слоеве върху картата</summary>
+      <div class="accbody">
+        <div id="toggles"></div>
+        <p class="slabel">Степен на несъответствието</p>
+        <div class="seg small" id="stepen"></div>
+      </div>
+    </details>
+
+    <details class="acc">
+      <summary>Актуалност на данните</summary>
+      <div class="accbody">
+        <p class="note" style="margin-top:0">Всеки показател носи значка с
+          годината си. Панелът вдясно е групиран по актуалност, защото
+          източниците са от различни години.</p>
+        <table class="vintage" id="vintage"></table>
+      </div>
+    </details>
+
+    <details class="acc">
+      <summary>Как се чете</summary>
+      <div class="accbody">
+        <p class="disc">
+          <b>Несъответствия.</b> Сгради, засечени от сателит, които попадат в
+          зони по ОУП 2009 без право на застрояване. Това
+          <b>не са установени незаконни строежи</b> — не са отчетени търпимите
+          строежи отпреди плана, ПУП с конкретен режим, стопанските постройки и
+          грешките в автоматичните очертания. Всеки случай изисква проверка по
+          документи.
+        </p>
+        <p class="disc warn" id="disc-hora"></p>
+        <p class="disc warn" id="disc-fond"></p>
+      </div>
+    </details>
+
+    <div class="sec tight">
+      <a class="xlink" href="https://tomam16.github.io/koy-pecheli/"
+         target="_blank" rel="noopener">
+        <span class="xt">Кой печели →</span>
+        <span class="xs">65 867 договора за обществени поръчки ·
+          43,6% с една оферта</span>
+      </a>
+    </div>
+
+    <details class="acc">
+      <summary>Данни и източници</summary>
+      <div class="accbody">
+        <button id="dl" class="dlbtn">Изтегли CSV с показателите</button>
+        <button id="dlsig" class="dlbtn">Изтегли CSV с несъответствията</button>
+        <div class="srcs" id="srcs"></div>
+      </div>
+    </details>
+  </aside>
+
+  <div id="mapwrap">
+    <div id="map"></div>
+    <button id="themebtn" title="Смяна на темата">◐</button>
+    <div id="hint">Кликни върху район за подробности. Приближи за сградите.</div>
+    <div id="detail"><button class="close" title="Затвори">×</button>
+      <div id="dbody"></div>
+    </div>
+  </div>
+</div>
+
+<script src="vendor/maplibre-gl.js"></script>
+<script src="vendor/pmtiles.js"></script>
+<script src="vendor/basemaps.js"></script>
+<script type="module" src="app.js"></script>
+</body>
+</html>
